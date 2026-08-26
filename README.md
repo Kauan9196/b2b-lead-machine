@@ -10,8 +10,8 @@ This is a custom-built B2B Lead Generation engine designed to automate local bus
 ⚠️ **Notice:** The backend scraping infrastructure, Playwright bypassing engine, and source code are **closed-source** to prevent abuse and protect intellectual property. 
 
 **Want to integrate a custom lead-generation pipeline like this into your agency?** Let's build yours.
-- 🔗 **Hire me on Upwork:** [Insert Link]
-- 🔗 **Hire me on Contra:** [Insert Link]
+- 🔗 **Upwork:** [Hire me on Upwork](https://www.upwork.com/freelancers/~01863b330a3897a766?mp_source=share)
+- 🔗 **Contra:** [View my Contra Portfolio](https://contra.com/kauan_miranda_1uvmpwxm?referralExperimentNid=DEFAULT_REFERRAL_PROGRAM&referrerUsername=kauan_miranda_1uvmpwxm)
 
 ---
 
