@@ -1,54 +1,150 @@
-# 🚀 B2B Lead Machine (Proprietary Architecture)
+<div align="center">
+  <img src="https://img.shields.io/badge/Status-Proprietary_Software-red?style=for-the-badge" alt="Proprietary Software">
+  <img src="https://img.shields.io/badge/Available_For-Freelance_Hire-blue?style=for-the-badge" alt="Available for Freelance Hire">
+</div>
 
-A high-performance, asynchronous B2B Lead Generation engine designed to automate local business prospecting for marketing agencies. It eliminates manual Google Maps searches, parses contact emails, and detects active Facebook Pixels at scale using a highly optimized, resource-safe browser pipeline.
+<br>
 
-> 🔒 **Proprietary Software Notice:** The backend scraping infrastructure, concurrent browser orchestrator, and source code are closed-source to protect intellectual property. It is displayed here as a case study in high-performance web automation.
+# B2B Lead Intelligence & AI Enrichment Engine
 
----
+An end-to-end lead research pipeline that transforms local business listings into enriched, evidence-backed prospect data for outbound campaigns.
 
-## 🎥 Video Demonstration
-<img width="1138" height="738" alt="Decolar gif reduzido" src="https://github.com/user-attachments/assets/248e323e-5acd-4171-9d5f-44b0586e3b51" />
+Instead of delivering a basic directory export, the system combines official business discovery, live website research, technical footprint analysis, AI enrichment, deterministic scoring, and human review into a clean CRM-ready CSV.
 
----
-
-## 📸 Software Preview
-<img width="1153" height="758" alt="Image" src="https://github.com/user-attachments/assets/f113b62b-1300-4f7e-810f-aa2aeac60ed8" />
-
----
-
-## 🛠️ Tech Stack & Engineering
-
-### 🟢 Core Technologies
-* **Backend Framework:** FastAPI (Python 3.12) - High-performance asynchronous ASGI server.
-* **Web Automation:** Async Playwright (Headless Chromium Orchestration).
-* **Data Sourcing:** Google Places API (Places & Details Endpoints).
-* **Data Parsing:** Native Python `re` (Asynchronous Regex Engine for Email Extraction).
-* **Frontend UI:** Tailwind CSS, Vanilla JavaScript (Asynchronous Fetch API).
-
-### 📐 Engineering Highlights & Architecture
-
-To scale this application from a local script to an enterprise-grade microservice, the system was completely refactored around non-blocking asynchronous principles:
-
-1. **Non-Blocking Thread Isolation (`asyncio.to_thread`)**
-   The Google Places API wrapper relies on synchronous HTTP requests. To prevent these blocking networking calls from freezing the FastAPI main event loop (which would make the server unresponsive to other users), all Google Maps API operations are isolated and delegated to separate OS threads using `asyncio.to_thread`.
-
-2. **Memory-Safe Concurrency Control (`asyncio.Semaphore`)**
-   Running headless browsers (Chromium) is highly resource-intensive, consuming roughly 150MB-300MB of RAM per active tab. To prevent server crashes due to Out-Of-Memory (OOM) errors in resource-constrained environments (such as a standard 1GB VPS cloud instance), the pipeline implements a strict execution concurrency guard using `asyncio.Semaphore(3)`. This limits the worker to a maximum of 3 concurrent browser instances, queueing extra requests safely.
-
-3. **Active Polling vs. Static Sleep (`wait_for_function`)**
-   Instead of using brittle, static timeouts (like forcing the browser to sleep for 3-5 seconds to wait for scripts to load), the automation engine actively polls the DOM. It checks for the existence of the `window.fbq` object (Facebook Pixel) with a hard dynamic limit of `3000ms`. If the Pixel is detected in 100ms, the worker continues instantly. If the site has no Pixel, it catches the timeout exception safely and moves on, boosting batch processing speeds up to 10x.
+> **Proprietary software:** this public repository is a product and engineering case study. The application source code, scraping pipeline, prompts, validation rules, and operational data remain private.
 
 ---
 
-## 🚀 Key Features Demonstrated
-* **Automated Lead Extraction:** Instant harvesting of localized businesses via Google Places API.
-* **Smart Lead Qualification:** Live, dynamic Facebook Pixel detection (Hot/Cold targeting) via isolated headless web browsers.
-* **CRM-Ready Export:** One-click CSV formatting designed specifically for seamless import into HubSpot, Salesforce, or GoHighLevel.
+## The Problem
+
+Raw business listings rarely contain enough context for effective outreach. Sales teams still need to visit websites, locate public contact information, understand each company's positioning, identify relevant sales angles, and manually clean the resulting spreadsheet.
+
+This project automates that research workflow while keeping uncertain information explicit instead of inventing missing facts.
+
+## What the System Does
+
+1. **Targeted business discovery**
+   - Searches by niche, city, and geographic intent through the Google Places API.
+   - Normalizes business names, addresses, phone numbers, websites, ratings, and review counts.
+   - Deduplicates results before enrichment.
+
+2. **Multi-page website research**
+   - Uses asynchronous Playwright browsers to execute JavaScript and inspect live pages.
+   - Discovers relevant pages such as Home, About, Services, and Contact.
+   - Extracts visible website content and preserves source URLs for auditing.
+
+3. **Public contact and email intelligence**
+   - Finds publicly listed business emails and records where they were found.
+   - Prioritizes domain-matching addresses and classifies lower-quality or generic candidates.
+   - Keeps missing contact data clearly marked instead of filling it with guesses.
+
+4. **Technical footprint audit**
+   - Detects Meta Pixel signals after client-side JavaScript execution.
+   - Converts technical findings into readable statuses rather than ambiguous `Yes/No` fields.
+
+5. **Evidence-backed AI enrichment**
+   - Uses Gemini with a structured JSON response contract.
+   - Generates an exact niche classification, executive summary, target audience, core services, and up to three personalized outreach icebreakers.
+   - Cross-checks generated claims against text collected from the company's website.
+   - Returns `insufficient_evidence` when the available content cannot support a reliable conclusion.
+
+6. **Lead scoring and human review**
+   - Assigns a deterministic 0–100 quality score and an A/B/C grade.
+   - Supports review states for approval, revision, or rejection.
+   - Allows operators to refine outreach copy before final delivery.
+
+7. **Batch operations and delivery**
+   - Runs background collection jobs with live progress and cancellation support.
+   - Saves previous searches locally so results can be reopened without repeating API calls.
+   - Exports all leads or only approved leads to a clean CSV for CRM and outreach tools.
 
 ---
 
-## 💼 Business Inquiries
-Need a custom, highly scalable data extraction pipeline or lead-generation solution for your marketing agency? Let's build yours.
+## Application Preview
 
-* 🔗 **Upwork:** [Hire me on Upwork](https://www.upwork.com/freelancers/~01863b330a3897a766?mp_source=share)
-* 🔗 **Contra:** [View my Contra Portfolio](https://contra.com/kauan_miranda_1uvmpwxm?referralExperimentNid=DEFAULT_REFERRAL_PROGRAM&referrerUsername=kauan_miranda_1uvmpwxm)
+<img width="1153" height="758" alt="B2B Lead Machine application interface" src="https://github.com/user-attachments/assets/f113b62b-1300-4f7e-810f-aa2aeac60ed8" />
+
+---
+
+## Example Deliverable
+
+| Data group | Example fields |
+|---|---|
+| Business identity | Company name, address, phone, website, rating, review count |
+| Contact intelligence | Public email, email quality, email source URL |
+| Technical audit | Meta Pixel detection status |
+| AI intelligence | Exact niche, executive summary, target audience, core services |
+| Outreach personalization | Up to three evidence-backed icebreakers with source references |
+| Quality control | Lead score, A/B/C grade, review status |
+
+The commercial deliverable is a curated CSV dataset. The automation itself is not distributed as part of the standard service.
+
+---
+
+## Architecture
+
+```text
+Search criteria
+      ↓
+Google Places discovery and deduplication
+      ↓
+Async website navigation and page discovery
+      ↓
+Contact extraction and technical audit
+      ↓
+Structured AI enrichment and evidence validation
+      ↓
+Deterministic scoring and human review
+      ↓
+CRM-ready CSV export
+```
+
+### Technology Stack
+
+- **Backend:** Python 3.12, FastAPI, Pydantic
+- **Browser automation:** Playwright Async with bounded concurrency
+- **Data source:** Google Places API (New)
+- **AI enrichment:** Gemini API with structured JSON output
+- **Persistence:** SQLite with WAL mode
+- **Frontend:** HTML, Tailwind CSS, Vanilla JavaScript
+- **Testing:** Pytest-based pipeline and validation tests
+
+### Engineering Highlights
+
+- Blocking SDK operations are isolated from FastAPI's event loop.
+- Browser concurrency is limited to protect memory and system stability.
+- Website evidence is collected once and reused across enrichment and validation steps.
+- AI output must conform to a defined schema and pass local evidence checks.
+- Partial progress is persisted, reducing data loss during long-running jobs.
+- Review status is stored separately from the lead payload for safer curation.
+- CSV output is formatted for reliable opening in spreadsheet and outreach applications.
+
+---
+
+## Reliability Boundaries
+
+- Results depend on Google Places coverage for the requested query and location.
+- Only publicly available website information is collected.
+- An email can be publicly sourced and syntactically valid without guaranteeing mailbox deliverability.
+- Some websites block automated browsers or expose too little content for AI enrichment.
+- Unsupported claims are rejected or marked as insufficient evidence.
+- The current product is an operator-assisted service, not a public multi-tenant SaaS platform.
+
+---
+
+## Ideal Use Cases
+
+- B2B marketing and cold email agencies
+- Founders and sales teams targeting local service businesses
+- Custom market research and prospect-list projects
+- Campaigns that require personalized, evidence-backed outreach angles
+- Technical audits for businesses missing important marketing instrumentation
+
+---
+
+## Work With Me
+
+I build custom data extraction, browser automation, lead intelligence, and API integration solutions. Engagements can range from a focused test batch to a custom multi-location research campaign.
+
+- **Upwork:** [Hire me on Upwork](https://www.upwork.com/freelancers/~01863b330a3897a766?mp_source=share)
+- **Contra:** [View my Contra portfolio](https://contra.com/kauan_miranda_1uvmpwxm?referralExperimentNid=DEFAULT_REFERRAL_PROGRAM&referrerUsername=kauan_miranda_1uvmpwxm)
