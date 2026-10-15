@@ -15,6 +15,20 @@ Instead of delivering a basic directory export, the system combines official bus
 
 ---
 
+## Application Preview
+
+From search configuration and reusable batch history to evidence-backed enrichment and human review:
+
+### Search and saved batches
+
+![B2B Lead Machine search interface with AI enrichment and saved searches](assets/lead-search-interface.png)
+
+### Enriched lead review
+
+![Enriched lead with quality score, Meta Pixel detection, business intelligence, evidence-backed icebreakers, and review controls](assets/lead-results-dashboard.png)
+
+---
+
 ## The Problem
 
 Raw business listings rarely contain enough context for effective outreach. Sales teams still need to visit websites, locate public contact information, understand each company's positioning, identify relevant sales angles, and manually clean the resulting spreadsheet.
@@ -57,12 +71,6 @@ This project automates that research workflow while keeping uncertain informatio
    - Runs background collection jobs with live progress and cancellation support.
    - Saves previous searches locally so results can be reopened without repeating API calls.
    - Exports all leads or only approved leads to a clean CSV for CRM and outreach tools.
-
----
-
-## Application Preview
-
-<img width="1153" height="758" alt="B2B Lead Machine application interface" src="https://github.com/user-attachments/assets/f113b62b-1300-4f7e-810f-aa2aeac60ed8" />
 
 ---
 
