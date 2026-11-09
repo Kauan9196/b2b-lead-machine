@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="https://img.shields.io/badge/Status-Proprietary_Software-red?style=for-the-badge" alt="Proprietary Software">
-  <img src="https://img.shields.io/badge/Available_For-Freelance_Hire-blue?style=for-the-badge" alt="Available for Freelance Hire">
+  <a href="#proprietary-software" title="Read about source-code availability"><img src="https://img.shields.io/badge/Status-Proprietary_Software-red?style=for-the-badge" alt="Proprietary Software"></a>
+  <a href="https://www.upwork.com/freelancers/~01863b330a3897a766" title="View my Upwork profile"><img src="https://img.shields.io/badge/Available_For-Freelance_Hire-blue?style=for-the-badge" alt="Available for Freelance Hire"></a>
 </div>
 
 <br>
@@ -11,20 +11,21 @@ An end-to-end lead research pipeline that transforms local business listings int
 
 Instead of delivering a basic directory export, the system combines official business discovery, live website research, technical footprint analysis, AI enrichment, deterministic scoring, and human review into a clean CRM-ready CSV.
 
+<a id="proprietary-software"></a>
+
 > **Proprietary software:** this public repository is a product and engineering case study. The application source code, scraping pipeline, prompts, validation rules, and operational data remain private.
 
 Independently developed project demonstrated using publicly available business data. The businesses shown are sample prospects, not clients.
 
 ## Product Walkthrough
 
-[![AI-enriched B2B lead intelligence with evidence-backed icebreakers and human review](assets/b2b-lead-intelligence-cover.png)](https://contra.com/p/LFoq7bFk-ai-enriched-b2-b-lead-intelligence-pipeline)
+![AI-enriched B2B lead intelligence with evidence-backed icebreakers and human review](assets/b2b-lead-intelligence-cover.png)
 
-**[Watch the 89-second demonstration on Contra](https://contra.com/p/LFoq7bFk-ai-enriched-b2-b-lead-intelligence-pipeline)**
+https://github.com/user-attachments/assets/e5ab457b-1d10-43ce-8aed-dcac9045360e
 
 The silent walkthrough shows a saved Dubai car-rental search, company enrichment, website evidence inspection, icebreaker editing, approval and rejection, and the approved-only export.
 
-- [Download the MP4 demonstration](assets/b2b-lead-machine-demo.mp4)
-- [View the three-page sample deliverable (PDF)](assets/b2b-lead-intelligence-sample.pdf)
+[View the three-page sample deliverable (PDF)](assets/b2b-lead-intelligence-sample.pdf)
 
 The public PDF includes selected records and evidence-backed hooks from an approved demonstration export. Phone numbers and email addresses are omitted from that sample.
 
