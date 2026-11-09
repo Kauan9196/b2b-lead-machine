@@ -13,6 +13,21 @@ Instead of delivering a basic directory export, the system combines official bus
 
 > **Proprietary software:** this public repository is a product and engineering case study. The application source code, scraping pipeline, prompts, validation rules, and operational data remain private.
 
+Independently developed project demonstrated using publicly available business data. The businesses shown are sample prospects, not clients.
+
+## Product Walkthrough
+
+[![AI-enriched B2B lead intelligence with evidence-backed icebreakers and human review](assets/b2b-lead-intelligence-cover.png)](https://contra.com/p/LFoq7bFk-ai-enriched-b2-b-lead-intelligence-pipeline)
+
+**[Watch the 89-second demonstration on Contra](https://contra.com/p/LFoq7bFk-ai-enriched-b2-b-lead-intelligence-pipeline)**
+
+The silent walkthrough shows a saved Dubai car-rental search, company enrichment, website evidence inspection, icebreaker editing, approval and rejection, and the approved-only export.
+
+- [Download the MP4 demonstration](assets/b2b-lead-machine-demo.mp4)
+- [View the three-page sample deliverable (PDF)](assets/b2b-lead-intelligence-sample.pdf)
+
+The public PDF includes selected records and evidence-backed hooks from an approved demonstration export. Phone numbers and email addresses are omitted from that sample.
+
 ---
 
 ## Application Preview
@@ -39,17 +54,18 @@ This project automates that research workflow while keeping uncertain informatio
 
 1. **Targeted business discovery**
    - Searches by niche, city, and geographic intent through the Google Places API.
-   - Normalizes business names, addresses, phone numbers, websites, ratings, and review counts.
-   - Deduplicates results before enrichment.
+   - Preserves business names, addresses, phone numbers, websites, and Google Place IDs.
+   - Uses geographic search segments and address-component filtering to collect up to 100 prospects, subject to coverage.
+   - Supports deduplication by company website domain or by business location before enrichment.
 
 2. **Multi-page website research**
    - Uses asynchronous Playwright browsers to execute JavaScript and inspect live pages.
-   - Discovers relevant pages such as Home, About, Services, and Contact.
+   - Discovers relevant pages such as Home, About, and Contact.
    - Extracts visible website content and preserves source URLs for auditing.
 
 3. **Public contact and email intelligence**
    - Finds publicly listed business emails and records where they were found.
-   - Prioritizes domain-matching addresses and classifies lower-quality or generic candidates.
+   - Ranks email candidates using domain matching and source-page signals.
    - Keeps missing contact data clearly marked instead of filling it with guesses.
 
 4. **Technical footprint audit**
@@ -69,6 +85,7 @@ This project automates that research workflow while keeping uncertain informatio
 
 7. **Batch operations and delivery**
    - Runs background collection jobs with live progress and cancellation support.
+   - Displays completed leads incrementally without recreating existing review cards.
    - Saves previous searches locally so results can be reopened without repeating API calls.
    - Exports all leads or only approved leads to a clean CSV for CRM and outreach tools.
 
@@ -78,8 +95,8 @@ This project automates that research workflow while keeping uncertain informatio
 
 | Data group | Example fields |
 |---|---|
-| Business identity | Company name, address, phone, website, rating, review count |
-| Contact intelligence | Public email, email quality, email source URL |
+| Business identity | Company name, address, city, state, country, phone, website, Google Place ID |
+| Contact intelligence | Public email and email source URL |
 | Technical audit | Meta Pixel detection status |
 | AI intelligence | Exact niche, executive summary, target audience, core services |
 | Outreach personalization | Up to three evidence-backed icebreakers with source references |
@@ -109,13 +126,13 @@ CRM-ready CSV export
 
 ### Technology Stack
 
-- **Backend:** Python 3.12, FastAPI, Pydantic
+- **Backend:** Python, FastAPI, Pydantic
 - **Browser automation:** Playwright Async with bounded concurrency
 - **Data source:** Google Places API (New)
 - **AI enrichment:** Gemini API with structured JSON output
 - **Persistence:** SQLite with WAL mode
 - **Frontend:** HTML, Tailwind CSS, Vanilla JavaScript
-- **Testing:** Pytest-based pipeline and validation tests
+- **Testing:** 24 unittest tests covering pipeline behavior, persistence, geographic filtering, enrichment validation, and a Chromium launch smoke test
 
 ### Engineering Highlights
 
